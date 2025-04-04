@@ -24,6 +24,7 @@ body {
 
 .theme-toggle {
   display: flex;
+  background-color: #F2F2F7;
   align-items: center;
   justify-items: center;
   padding: 0.4rem;
@@ -70,11 +71,21 @@ body {
   letter-spacing: -0.6px;
 }
 
+.exclude {
+  display: flex;
+  align-items: center;
+}
+
 .options > div {
   display: flex;
   flex-direction: column;
   align-items: start;
   margin-bottom: 1rem;
+}
+
+.options-group {
+  display: flex;
+  align-items: center;
 }
 
 .options input[type="checkbox"] {
@@ -145,8 +156,52 @@ body {
   margin-top: 1.5rem;
 }
 
+.letter-density p {
+  margin-bottom: 1.25rem;
+}
+
 .letter-density h3 {
   margin-bottom: 1.25rem;
+}
+
+/* character progress bar */
+.bar-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.letter {
+  width: 1rem;
+  line-height: 130%;
+  letter-spacing: -0.6px;
+}
+
+.progress {
+  padding: 0.16rem 0.88rem;
+  flex-grow: 1;
+}
+
+.bar {
+  height: 0.75rem;
+  background: #f2f2f7;
+  border-radius: 999px;
+}
+
+.fill {
+  height: 100%;
+  background: #d3a0fa;
+  border-radius: 999px;
+}
+
+.e {
+  width: 40%;
+}
+
+.count {
+  font-size: 14px;
+  color: #333;
 }
 
 /* media Queries */
@@ -177,11 +232,6 @@ body {
 
   .options > div {
     flex-direction: row;
-  }
-
-  .options-group {
-    display: flex;
-    align-items: center;
   }
 
   .options-group.exclude {
@@ -256,7 +306,7 @@ body {
   }
 
   .result-card {
-    padding: 1.66rem 1rem ;
+    padding: 1.66rem 1rem;
   }
 
   .result-card h2 {
@@ -268,6 +318,4 @@ body {
   .options > div {
     flex-direction: row;
   }
-
-
 }
