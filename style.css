@@ -56,6 +56,7 @@ body {
   background-color: #e4e4ef;
   height: 200px;
   margin-bottom: 1rem;
+  resize: none;
 }
 
 #text-input::placeholder,
