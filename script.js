@@ -78,7 +78,7 @@ function updateReadingTime(wordCount) {
   const readingTimeMinutes = Math.ceil(wordCount / 200);
   const readingTimeElement = document.querySelector(".options span");
   if (readingTimeElement) {
-    readingTimeElement.textContent = `Approx. reading time: ${readingTimeMinutes > 0 ? "<" : ""} ${readingTimeMinutes} minute${readingTimeMinutes !== 1 ? 's' : ''}`;
+    readingTimeElement.textContent = `Approx. reading time: ${readingTimeMinutes > 0 ? "<" : ""} ${readingTimeMinutes > 0 ? readingTimeMinutes : "0"} minute${readingTimeMinutes !== 1 ? 's' : ''}`;
   }
 }
 
@@ -104,7 +104,6 @@ function updateLetterDensity(text) {
   if (!text || !text.trim()) {
     if (placeholder) {
       placeholder.style.display = 'block';
-      densityContainer.querySelectorAll('.bar-container').forEach(el => el.remove());
     }
     return;
   }
@@ -129,36 +128,33 @@ function updateLetterDensity(text) {
   // Sort letters by frequency
   const sortedLetters = Object.keys(freq).sort((a, b) => freq[b] - freq[a]);
 
-  // Create all bars (initially hidden if beyond limit)
-  const maxInitialBars = 5; // Changed back to 5 from 3
+  // Find the maximum frequency to normalize percentages
+  const maxFrequency = freq[sortedLetters[0]];
+  
+  // Create all bars
+  const maxInitialBars = 5;
   const shouldShowSeeMore = sortedLetters.length > maxInitialBars;
   
   sortedLetters.forEach((letter, index) => {
     const count = freq[letter];
-    const percentage = ((count / totalLetters) * 100).toFixed(2);
-    const percentageClass = Math.floor(percentage / 10) * 10;
+    // Calculate actual percentage and normalized percentage for visualization
+    const actualPercentage = ((count / totalLetters) * 100).toFixed(2);
+    const normalizedPercentage = (count / maxFrequency) * 100;
     
     const barHTML = `
       <div class="bar-container ${index >= maxInitialBars ? 'hidden-bar' : ''}">
         <div class="letter">${letter.toUpperCase()}</div>
         <div class="progress">
           <div class="bar">
-            <div class="fill p${percentageClass}" data-percentage="${percentage}"></div>
+            <div class="fill" style="width: ${normalizedPercentage}%" data-percentage="${actualPercentage}"></div>
           </div>
         </div>
-        <div class="count">${count} (${percentage}%)</div>
+        <div class="count">${count} (${actualPercentage}%)</div>
       </div>
     `;
     
     densityContainer.insertBefore(document.createRange().createContextualFragment(barHTML), seeMoreBtn);
   });
-
-  // Add scrollable container if many bars
-  if (sortedLetters.length > 8) {
-    densityContainer.classList.add('scrollable');
-  } else {
-    densityContainer.classList.remove('scrollable');
-  }
 
   // Show "See More" button if needed
   if (shouldShowSeeMore) {
@@ -180,12 +176,11 @@ function updateLetterDensity(text) {
       if (isExpanded) {
         seeMoreBtn.querySelector('.btn-text').textContent = 'See Less';
         chevron.style.transform = 'rotate(180deg)';
-        // Show all hidden bars
         densityContainer.querySelectorAll('.hidden-bar').forEach(bar => bar.classList.remove('hidden-bar'));
       } else {
         seeMoreBtn.querySelector('.btn-text').textContent = 'See More';
         chevron.style.transform = 'rotate(0deg)';
-        densityContainer.querySelectorAll(`.bar-container:nth-child(n + ${maxInitialBars + 1})`).forEach((bar, index )=> bar.classList.add('hidden-bar'));
+        densityContainer.querySelectorAll(`.bar-container:nth-child(n + ${maxInitialBars + 1})`).forEach(bar => bar.classList.add('hidden-bar'));
       }
     };
   }
