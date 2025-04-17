@@ -11,6 +11,7 @@
       href="./assets/images/favicon-32x32.png"
     />
     <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
     <title>Frontend Mentor | Character counter</title>
   </head>
 
@@ -39,6 +40,11 @@
             id="text-input"
             placeholder="Start typing here...(Place your text here)"
           ></textarea>
+          <div class="limit-warning">
+            <img src="./assets/images/icon-info.svg" alt="warning-icon">
+            <span class="warning-txt"></span>
+          </div>
+      
         </div>
 
         <div class="options">
@@ -49,13 +55,13 @@
             </div>
 
             <div class="options-group character">
-              <input type="checkbox" id="char-limit" />
-              <label for="char-limit">Set Character Limit</label>
-              <!-- <input type="number" id="char-limit" min="0" max="300" placeholder="300" /> -->
+              <input type="checkbox" id="enable-limit" />
+              <label for="enable-limit">Set Character Limit</label>
+              <input type="number" id="char-limit" min="1" />
             </div>
           </div>
 
-          <span>Approx. reading time: 1 minute</span>
+          <span>Approx. reading time: 0 minute</span>
         </div>
       </section>
 
@@ -64,7 +70,7 @@
         <div class="result-cards">
           <div class="result-card characters">
             <div class="char-containers">
-              <h2 class="char-count">0</h2>
+              <h2 class="char-count">00</h2>
               <p>Total Characters</p>
             </div>
             <img
@@ -75,7 +81,7 @@
           </div>
 
           <div class="result-card word">
-            <h2 class="word-count">0</h2>
+            <h2 class="word-count">00</h2>
             <p>Word Count</p>
             <img
               src="./assets/images/pattern-word-count.svg"
@@ -84,7 +90,7 @@
             />
           </div>
           <div class="result-card sentence">
-            <h2 class="sentence-count">0</h2>
+            <h2 class="sentence-count">00</h2>
             <p>Sentence Count</p>
             <img
               src="./assets/images/pattern-sentence-count.svg"
@@ -96,16 +102,10 @@
         <div class="letter-density">
           <!-- if there's no character input show this -->
           <h3>Letter Density</h3>
-          <p>No characters found. Start typing to see letter density.</p>
-
+          <p class="placeholder-text">No characters found. Start typing to see letter density.</p>
           <!-- on cahracter input show this  -->
-          <div class="bar-container">
-            <div class="letter">E</div>
-            <div class="progress">
-              <div class="bar"><div class="fill e"></div></div>
-            </div>
-            <div class="count">40 (16.06%)</div>
-          </div>
+          
+         
         </div>
       </section>
     </main>
