@@ -1,4 +1,4 @@
-  @font-face {
+@font-face {
   font-family: "DM_Sans";
   src: url("./assets/fonts/DM_Sans/DMSans-VariableFont_opsz\,wght.ttf");
 }
@@ -9,7 +9,6 @@
   box-sizing: border-box;
   font-family: DM_Sans;
 }
-
 
 body {
   padding: 1rem;
@@ -25,7 +24,7 @@ body {
 
 .theme-toggle {
   display: flex;
-  background-color: #F2F2F7;
+  background-color: #f2f2f7;
   align-items: center;
   justify-items: center;
   padding: 0.4rem;
@@ -50,9 +49,9 @@ body {
 }
 
 #text-input:focus {
-  border: 2px solid #C27CF8;
+  border: 2px solid #c27cf8;
   outline: none;
-  box-shadow:0 0 10px 0 #D3A0FA;
+  box-shadow: 0 0 10px 0 #d3a0fa;
 }
 
 #text-input {
@@ -88,7 +87,7 @@ body {
 .options > div {
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
   margin-bottom: 1rem;
 }
 
@@ -98,18 +97,58 @@ body {
 }
 
 .options input[type="checkbox"] {
+  all: unset;
+  border: 1px solid #404254;
+  border-radius: 4px;
   width: 1rem;
   height: 1rem;
-  border-radius: 40px;
   margin-right: 0.7rem;
+  position: relative;
+  cursor: pointer;
+  background-color: white;
+}
+
+.options input[type="checkbox"]:hover,
+.options input[type="checkbox"]:checked {
+  background-color: #c27cf8;
+  border: none;
+}
+
+.options input[type="checkbox"]::after {
+  content: "";
+  display: block;
+  border: none;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url("./assets/images/icon-check.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 80%;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.options input[type="checkbox"]:hover::after,
+.options input[type="checkbox"]:checked::after {
+  background-color: #c27cf8;
+  border-radius: 4px;
+  opacity: 1;
+}
+
+.options input[type="checkbox"]:focus {
+  border: none;
+  box-shadow: 0 0 0 2px #e4e4ef, 0 0 0 4px #d3a0fa;
 }
 
 .options-group.exclude label,
 .options-group.character label {
   cursor: pointer;
   margin-left: 8px;
-} 
-
+}
 
 /* character limit styles */
 #char-limit {
@@ -121,38 +160,30 @@ body {
   border-radius: 0.38rem;
 }
 
-
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-
-
-
 .limit-exceeded {
-  border: 1px solid #DA3701 !important;
+  border: 1px solid #da3701 !important;
   outline: none;
-  box-shadow: 0 0 8px 0 #DA3701 !important;
+  box-shadow: 0 0 8px 0 #da3701 !important;
 }
 
-
-
-.limit-warning{
+.limit-warning {
   display: none;
   align-items: center;
   gap: 0.5rem;
-  color: #DA3701;
+  color: #da3701;
   margin-bottom: 1rem;
 }
 
 .limit-warning img {
   object-fit: cover;
-flex-shrink: 0;
+  flex-shrink: 0;
 }
-
-
 
 /* results */
 .results {
@@ -226,7 +257,7 @@ flex-shrink: 0;
   margin-bottom: 1.25rem;
 }
 
-.placeholder-text{
+.placeholder-text {
   display: block;
 }
 
@@ -259,20 +290,42 @@ flex-shrink: 0;
   height: 100%;
   background: #d3a0fa;
   border-radius: 999px;
-  transition: width 0.5s ease-out;        
+  transition: width 0.5s ease-out;
 }
 
-.fill.p0 { width: 0%; }
-.fill.p10 { width: 10%; }
-.fill.p20 { width: 20%; }
-.fill.p30 { width: 30%; }
-.fill.p40 { width: 40%; }
-.fill.p50 { width: 50%; }
-.fill.p60 { width: 60%; }
-.fill.p70 { width: 70%; }
-.fill.p80 { width: 80%; }
-.fill.p90 { width: 90%; }
-.fill.p100 { width: 100%; }
+.fill.p0 {
+  width: 0%;
+}
+.fill.p10 {
+  width: 10%;
+}
+.fill.p20 {
+  width: 20%;
+}
+.fill.p30 {
+  width: 30%;
+}
+.fill.p40 {
+  width: 40%;
+}
+.fill.p50 {
+  width: 50%;
+}
+.fill.p60 {
+  width: 60%;
+}
+.fill.p70 {
+  width: 70%;
+}
+.fill.p80 {
+  width: 80%;
+}
+.fill.p90 {
+  width: 90%;
+}
+.fill.p100 {
+  width: 100%;
+}
 
 .count {
   font-size: 14px;
@@ -287,7 +340,7 @@ flex-shrink: 0;
   display: none;
   margin-top: 1.25rem;
   background: none;
-  color: #12131A;
+  color: #12131a;
   border: none;
   cursor: pointer;
 }
@@ -298,16 +351,7 @@ flex-shrink: 0;
   transition: transform 0.2s ease;
 }
 
-
-
-
-
-
-
-
 /* media Queries */
-
-
 
 /* tablets */
 @media screen and (min-width: 600px) and (max-width: 1024px) {
@@ -365,10 +409,8 @@ flex-shrink: 0;
   }
 }
 
-
-
 /* desktop */
-  @media screen and (min-width: 1024px) {
+@media screen and (min-width: 1024px) {
   body {
     max-width: 1200px;
     margin: 0 auto;
