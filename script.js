@@ -27,6 +27,14 @@ textArea.addEventListener("beforeinput", (e) => {
   }
 });
 
+// Prevent negative input
+charLimitInput.addEventListener("keydown", (e) => {
+  if (e.key === "-" || e.key === "e") {
+    e.preventDefault();
+  }
+});
+
+
 // Initialize
 charLimitInput.style.display = "none";
 updateCounts();
