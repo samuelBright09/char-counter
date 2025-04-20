@@ -104,46 +104,6 @@ body {
   margin-right: 0.7rem;
 }
 
-/* .options input[type="checkbox"] {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #C27CF8;
-  border-radius: 4px;
-  cursor: pointer;
-  position: relative;
-  transition: all 0.2s ease;
-}
-
-.option input[type="checkbox"]:checked {
-  background-color: #C27CF8;
-  border-color: #d3a0fa;
-}
-
-.option input[type="checkbox"]:checked::after {
-  content: "\2714";
-  position: absolute;
-  color: black;
-  font-size: 14px;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.option input[type="checkbox"]:hover {
-  background-color: #C27CF8;
-  border: 1px solid #d3a0fa;
-}
-
-.option input[type="checkbox"]:focus {
-  outline: none;
-  border-color: #ffffff;
-  box-shadow: 0 0 0 2px #d3a0fa;
-}
-*/
-
-
 .options-group.exclude label,
 .options-group.character label {
   cursor: pointer;
@@ -408,7 +368,7 @@ flex-shrink: 0;
 
 
 /* desktop */
-@media screen and (min-width: 1024px) {
+  @media screen and (min-width: 1024px) {
   body {
     max-width: 1200px;
     margin: 0 auto;
