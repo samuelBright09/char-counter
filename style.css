@@ -86,6 +86,20 @@ body.dark-mode input[type="checkbox"] {
   border: 1px solid #E4E4EF;
 }
 
+body.dark-mode .limit-exceeded {
+  border: 1px solid #FE8159 !important;
+  box-shadow: 0 0 8px 0 #FE8159 !important;
+}
+
+body.dark-mode .limit-warning {
+  color: #FE8159;
+}
+
+body.dark-mode .limit-warning img {
+fill: #FE8159;
+}
+
+
 
 
 
