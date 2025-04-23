@@ -69,6 +69,12 @@ body.dark-mode .see-more-btn {
   color: #e4e4ef;
 }
 
+body.dark-mode input[type="number"] {
+  background-color: transparent ;
+  color: #E4E4EF;
+  border: 1px solid #e4e4ef;
+}
+
 body.dark-mode .chevron-icon {
   fill: #e4e4ef;
 }
