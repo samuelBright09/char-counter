@@ -5,6 +5,7 @@ const sumOfSentences = document.getElementsByClassName("sentence-count")[0];
 const excludeSpacesCheckbox = document.getElementById("exclude-spaces");
 const enableLimitCheckbox = document.getElementById("enable-limit");
 const charLimitInput = document.getElementById("char-limit");
+const toggleThemeBtn = document.querySelector(".theme-toggle")
 
 // Event Listeners
 textArea.addEventListener("input", updateCounts);
@@ -34,10 +35,25 @@ charLimitInput.addEventListener("keydown", (e) => {
   }
 });
 
+//listen for theme toggle
+toggleThemeBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode")
+  const isDarkMode = document.body.classList.contains("dark-mode");
+  localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+})
+
+
 
 // Initialize
 charLimitInput.style.display = "none";
 updateCounts();
+const savedTheme = localStorage.getItem("theme");
+if (savedTheme === "dark") {
+  document.body.classList.add("dark-mode");
+}
+
+
+
 
 function toggleLimitInput() {
   if (enableLimitCheckbox.checked) {
@@ -235,3 +251,5 @@ function createSeeMoreButton() {
   btn.className = "see-more-btn";
   return btn;
 }
+
+
