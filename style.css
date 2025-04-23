@@ -14,6 +14,84 @@ body {
   padding: 1rem;
 }
 
+.logo-dark {
+  display: none;
+}
+
+/* dark theme */
+body.dark-mode {
+  background-color: #12131a;
+}
+
+body,
+.theme-toggle,
+textarea,
+input,
+.bar-container,
+.progress,
+.bar,
+.fill {
+  transition: background-color 0.6s ease-in-out, color 0.6s ease-in-out;
+}
+
+body.dark-mode .logo-light {
+  display: none;
+}
+
+body.dark-mode .logo-dark {
+  display: block;
+}
+
+body.dark-mode .theme-toggle {
+  background-color: #2a2b37;
+}
+
+body.dark-mode .moon-icon {
+  display: none;
+}
+
+body.dark-mode .sun-icon {
+  display: block;
+}
+
+body.dark-mode #text-input {
+  background-color: #2a2b37;
+  color: #e4e4ef;
+  border: 1px solid #404254;
+}
+
+body.dark-mode #text-input::placeholder,
+body.dark-mode .options,
+body.dark-mode .card-header h1,
+body.dark-mode .letter-density,
+body.dark-mode .count,
+body.dark-mode .see-more-btn {
+  color: #e4e4ef;
+}
+
+body.dark-mode .chevron-icon {
+  fill: #e4e4ef;
+}
+
+body.dark-mode .bar {
+  background-color: #21222c;
+}
+
+
+.sun-icon.dark-mode {
+  display: block;
+}
+
+body.dark-mode input[type="checkbox"] {
+  border: 1px solid #E4E4EF;
+}
+
+
+
+
+.sun-icon {
+  display: none;
+}
 /* header */
 .main-header {
   display: flex;
@@ -30,6 +108,7 @@ body {
   padding: 0.4rem;
   border-radius: 0.4rem;
   border: none;
+  cursor: pointer;
 }
 
 .theme-toggle > img {
@@ -105,10 +184,8 @@ body {
   margin-right: 0.7rem;
   position: relative;
   cursor: pointer;
-  background-color: white;
 }
 
-.options input[type="checkbox"]:hover,
 .options input[type="checkbox"]:checked {
   background-color: #c27cf8;
   border: none;
@@ -132,7 +209,6 @@ body {
   pointer-events: none;
 }
 
-.options input[type="checkbox"]:hover::after,
 .options input[type="checkbox"]:checked::after {
   background-color: #c27cf8;
   border-radius: 4px;
