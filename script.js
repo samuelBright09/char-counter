@@ -81,17 +81,16 @@ function updateCounts() {
   }
 
   // Words
-  const words = textInput
-    .trim()
-    .split(/\s+/)
-    .filter((text) => text !== "");
-  let wordCount = words.length;
+  const words = textInput.match(/\b[a-zA-Z]+(?:['-][a-zA-Z]+)*\b/g) || [];
+  const wordCount = words.length;
+
+
 
   // Sentences
-  const sentences = textInput
-    .split(/[.!?]+/)
-    .filter((s) => s.trim().length > 0);
-  const sentenceCount = sentences.length;
+  const sentences = textInput.match(/\b[a-zA-Z][^.!?]*[.!?]/g) || [] ;
+  const sentenceCount =  sentences.length;
+
+
 
   // Update UI
   totalCharacters.textContent = charCountLength.toString().padStart(2, "0");
