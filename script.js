@@ -81,17 +81,16 @@ function updateCounts() {
   }
 
   // Words
-  const words = textInput
-    .trim()
-    .split(/\s+/)
-    .filter((text) => text !== "");
-  let wordCount = words.length;
+  const words = textInput.match(/\b[a-zA-Z]+(?:['-][a-zA-Z]+)*\b/g) || [];
+  const wordCount = words.length;
+
+
 
   // Sentences
-  const sentences = textInput
-    .split(/[.!?]+/)
-    .filter((s) => s.trim().length > 0);
-  const sentenceCount = sentences.length;
+  const sentences = textInput.match(/\b[a-zA-Z][^.!?]*[.!?]/g) || [] ;
+  const sentenceCount =  sentences.length;
+
+
 
   // Update UI
   totalCharacters.textContent = charCountLength.toString().padStart(2, "0");
@@ -120,13 +119,12 @@ function updateCounts() {
 }
 
 function updateReadingTime(wordCount) {
-  const readingTimeMinutes = Math.ceil(wordCount / 200);
+  const readingTimeMinutes = wordCount / 200; // Calculate reading time
   const readingTimeElement = document.querySelector(".options span");
+
   if (readingTimeElement) {
     readingTimeElement.textContent = `Approx. reading time: ${
-      readingTimeMinutes > 0 ? "<" : ""
-    } ${readingTimeMinutes > 0 ? readingTimeMinutes : "0"} minute${
-      readingTimeMinutes !== 1 ? "s" : ""
+      wordCount === 0 ? "0 minutes" : readingTimeMinutes < 1 ? "< 1 minute" : `${Math.ceil(readingTimeMinutes)} minute${Math.ceil(readingTimeMinutes) !== 1 ? "s" : ""}`
     }`;
   }
 }
