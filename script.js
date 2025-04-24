@@ -119,13 +119,12 @@ function updateCounts() {
 }
 
 function updateReadingTime(wordCount) {
-  const readingTimeMinutes = Math.ceil(wordCount / 200);
+  const readingTimeMinutes = wordCount / 200; // Calculate reading time
   const readingTimeElement = document.querySelector(".options span");
+
   if (readingTimeElement) {
     readingTimeElement.textContent = `Approx. reading time: ${
-      readingTimeMinutes > 0 ? "<" : ""
-    } ${readingTimeMinutes > 0 ? readingTimeMinutes : "0"} minute${
-      readingTimeMinutes !== 1 ? "s" : ""
+      wordCount === 0 ? "0 minutes" : readingTimeMinutes < 1 ? "< 1 minute" : `${Math.ceil(readingTimeMinutes)} minute${Math.ceil(readingTimeMinutes) !== 1 ? "s" : ""}`
     }`;
   }
 }
