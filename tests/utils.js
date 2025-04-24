@@ -20,4 +20,18 @@ function getSenteceCount(textInput) {
     
 }
 
-module.exports = { getCharaterLength, getWordCount, getSenteceCount };
+
+// function to update reading time
+function updateReadingTime(wordCount) {
+    const readingTimeMinutes = wordCount / 200; // Calculate reading time
+    const readingTimeElement = document.querySelector(".options span");
+  
+    if (readingTimeElement) {
+      readingTimeElement.textContent = `Approx. reading time: ${
+        wordCount === 0 ? "0 minutes" : readingTimeMinutes < 1 ? "< 1 minute" : `${Math.ceil(readingTimeMinutes)} minute${Math.ceil(readingTimeMinutes) !== 1 ? "s" : ""}`
+      }`;
+    }
+  }
+  
+
+module.exports = { getCharaterLength, getWordCount, getSenteceCount, updateReadingTime };
