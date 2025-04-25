@@ -25,23 +25,40 @@ describe("text Analysis", () => {
   test("properly counts words", () => {
     expect(getWordCount("I am strong")).toBe(3);
     // edge cases(special characters, empty-input, excessive white-space)
-    expect(getWordCount("@!##$% *&%#4^$")).toBe(0);
-    expect(getWordCount("")).toBe(0);
-    expect(getWordCount(`   `)).toBe(0);
+
     expect(getWordCount("mother-in-law")).toBe(1);
   });
 
+  test("Avoids counting special characters as words", () => {
+    expect(getWordCount("@!##$% *&%#4^$")).toBe(0);
+  });
+
+  test("returns correct word count on empty input", () => {
+    expect(getWordCount("")).toBe(0);
+  });
+
+  test("returns zero for word count on excess white space", () => {
+    expect(getWordCount(`   `)).toBe(0);
+  });
+
   // test sentence count
-  test("properly counts sentences", () => {
+  test("returns correct sentences count", () => {
     expect(getSenteceCount("I am young. I am rich! Who am I?")).toBe(3);
-    // edge cases(special characters, empty-input, excessive white-space)
+  });
+
+  // edge cases
+  test("returns correct sentence count without sentence-ending-punctuations", () => {
     expect(getSenteceCount("I am young")).toBe(0);
+  });
+  test("returns correct sentence count for combination of special characters and punctuations", () => {
     expect(getSenteceCount("@#^&*? @$%&*&^>.")).toBe(0);
+  });
+
+  test("returns correct sentence count for combination of punctuations", () => {
     expect(getSenteceCount("!.#>...")).toBe(0);
   });
 });
 
-// test character counts
 
 // test for proper dom updates
 describe("DOM updates", () => {
