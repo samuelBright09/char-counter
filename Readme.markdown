@@ -82,6 +82,3 @@ To deploy or update the Character Counter:
 5. **Monitor**: Check build status and metrics in the Amplify Console. Set CloudWatch alarms for Free Tier limits if needed.
 
 For detailed instructions, refer to the [AWS Amplify Documentation](https://docs.aws.amazon.com/amplify/) or contact the project maintainer.
-
-## License
-This project is licensed under the MIT License. See the LICENSE file for details.
